@@ -1,8 +1,14 @@
-# ReREF
-The code for ReREF: A Unified Retrieval Framework with Document Ranking and EDU Filtering for Multi-document Summarization 
+<h1 align="center"> <p>ReREF</p></h1>
+<h3 align="center">
+    <p>"A Unified Retrieval Framework with Document Ranking and EDU Filtering for Multi-document Summarization" </p>
+</h3>
 
-ReREF is a novel retrieval-based framework that integrates query selection and document ranking and shortening into a unified process. Our approach identifies the most salient elementary discourse units (EDUs) from input documents and utilizes them as latent queries. These queries guide the document ranking by calculating relevance scores through a multi-query mechanism. Instead of depending on traditional truncation, our approach filters out irrelevant EDUs to fit within the context length, ensuring that only the most critical information is preserved for summarization. 
+## Introduction
+This is the code for ReREF, a novel retrieval-based framework that integrates query selection and document ranking and shortening into a unified process. Our approach identifies the most salient elementary discourse units (EDUs) from input documents and utilizes them as latent queries. These queries guide the document ranking by calculating relevance scores through a multi-query mechanism. Instead of depending on traditional truncation, our approach filters out irrelevant EDUs to fit within the context length, ensuring that only the most critical information is preserved for summarization. 
 We evaluate our framework on multiple MDS datasets, demonstrating consistent improvements in ROUGE metrics while confirming its scalability and flexibility across diverse model architectures. 
+
+## Framework
+<img src="./framework.png" alt="Overall Framework" width="600" />
 
 
 ## Set up
@@ -15,7 +21,7 @@ pip install -r requirements.txt
 
 ## Usage of ReREF
 Usage of ReREF follows the procudure of our framework, which include three steps: 1. Datasets creating, 2. Retriever training, 3. summarizer training
-![Overall Framework](./framework.png)
+
 
 ### 1. Datasets creating
 1. Download the source code of DMRST_Parser from [here](https://github.com/seq-to-mind/DMRST_Parser) to `./DMRST_Parser`.
@@ -42,7 +48,7 @@ python primer_hf_main_modify.py --mode ${mode}
 ```
 
 For Large Language Models, Llama 3 and StableLM-Zephyr, we use [LitGPT](https://github.com/Lightning-AI/litgpt) to achieve fast and convenient training. The prompt used for LLMs is
-![Overall Framework](./LLMprompt.png)
+<img src="./LLMprompt.png" alt="LLM prompt in MDS" width="600" />
 
 
 ## Datasets
