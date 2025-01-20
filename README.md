@@ -49,7 +49,13 @@ python primer_hf_main_modify.py --mode ${mode}
 ```
 
 For Large Language Models, Llama 3 and StableLM-Zephyr, we use [LitGPT](https://github.com/Lightning-AI/litgpt) to achieve fast and convenient training. The prompt used for LLMs is
-![LLM prompt in MDS](./LLMprompt.png)
+
+| **Prompt** |
+|--------|
+| The following document comes from the topic-related multiple sources. |
+| Using the information only in the document, summarize the document that the sources mainly talk about. |
+| Document: \{document\}  |
+
 <!-- <img src="./LLMprompt.png" alt="LLM prompt in MDS" width="600" /> -->
 
 
