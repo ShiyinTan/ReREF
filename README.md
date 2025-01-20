@@ -8,7 +8,8 @@ This is the code for ReREF, a novel retrieval-based framework that integrates qu
 We evaluate our framework on multiple MDS datasets, demonstrating consistent improvements in ROUGE metrics while confirming its scalability and flexibility across diverse model architectures. 
 
 ## Framework
-<img src="./framework.png" alt="Overall Framework" width="600" />
+![Overall Framework](./framework.png)
+<!-- <img src="./framework.png" alt="Overall Framework" width="600" /> -->
 
 
 ## Set up
@@ -48,7 +49,8 @@ python primer_hf_main_modify.py --mode ${mode}
 ```
 
 For Large Language Models, Llama 3 and StableLM-Zephyr, we use [LitGPT](https://github.com/Lightning-AI/litgpt) to achieve fast and convenient training. The prompt used for LLMs is
-<img src="./LLMprompt.png" alt="LLM prompt in MDS" width="600" />
+![LLM prompt in MDS](./LLMprompt.png)
+<!-- <img src="./LLMprompt.png" alt="LLM prompt in MDS" width="600" /> -->
 
 
 ## Datasets
