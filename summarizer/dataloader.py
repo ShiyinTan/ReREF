@@ -90,8 +90,8 @@ class SummarizationDataset(Dataset):
         if self.join_method in ["original"]:
             all_docs = entry["document"]
             tgt = entry["summary"]
-            doc_scores = entry["sent_qa_trans_doc_score_chunk"]
-            doc_edu_scores = entry["sent_qa_trans_doc_edu_score"]
+            doc_scores = entry["predict_doc_score"]
+            doc_edu_scores = entry["predict_doc_edu_score"]
             doc_token_nums = entry["doc_token_num"]
             doc_clean_list, doc_edus_list = get_docs_euds_lists(all_docs)
             doc_rank = np.argsort(doc_scores)[::-1]
@@ -129,8 +129,8 @@ class SummarizationDataset(Dataset):
         elif self.join_method in ["original_ranking_filtering"]:
             all_docs = entry["document"]
             tgt = entry["summary"]
-            doc_scores = entry["sent_qa_trans_doc_score_chunk"]
-            doc_edu_scores = entry["sent_qa_trans_doc_edu_score"]
+            doc_scores = entry["predict_doc_score"]
+            doc_edu_scores = entry["predict_doc_edu_score"]
             doc_token_nums = entry["doc_token_num"]
             doc_clean_list, doc_edus_list = get_docs_euds_lists(all_docs)
             doc_rank = np.argsort(doc_scores)[::-1]             
@@ -192,8 +192,8 @@ class SummarizationDataset(Dataset):
         elif self.join_method in ["truncate_last_ranking_filtering"]: # only filtering on the last doc within limited token len
             all_docs = entry["document"]
             tgt = entry["summary"]
-            doc_scores = entry["sent_qa_trans_doc_score_chunk"]
-            doc_edu_scores = entry["sent_qa_trans_doc_edu_score"]
+            doc_scores = entry["predict_doc_score"]
+            doc_edu_scores = entry["predict_doc_edu_score"]
             doc_token_nums = entry["doc_token_num"]
             doc_clean_list, doc_edus_list = get_docs_euds_lists(all_docs)
             doc_rank = np.argsort(doc_scores)[::-1]

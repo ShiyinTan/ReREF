@@ -95,7 +95,7 @@ def train(args):
 
     # load datasets
     if args.join_method in ["original", "original_ranking_filtering", "truncate_last_ranking_filtering"]:
-        hf_datasets = load_dataset(f"HF-SSSVVVTTT/{args.dataset_name}_edus")
+        hf_datasets = load_dataset(f"HF-Data-for-Summarizer/{args.dataset_name}")
         train_dataloader = get_dataloader_summ(
             args, hf_datasets, model.tokenizer, "train", args.num_workers, True
         )
@@ -200,7 +200,7 @@ def test(args):
 
     # load dataset
     if args.join_method in ["original", "original_ranking_filtering", "truncate_last_ranking_filtering"]:
-        hf_datasets = load_dataset(f"HF-SSSVVVTTT/{args.dataset_name}_edus")
+        hf_datasets = load_dataset(f"HF-Data-for-Summarizer/{args.dataset_name}")
         test_dataloader = get_dataloader_summ(
             args, hf_datasets, model.tokenizer, "test", args.num_workers, False
         )
