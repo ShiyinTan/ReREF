@@ -876,8 +876,6 @@ class RankModel(pl.LightningModule):
             else:
                 vloss.append(x["vloss"])
         vloss = torch.stack(vloss).mean()
-        # vloss = torch.stack([torch.tensor(x["vloss"]) if not isinstance(x["vloss"], torch.Tensor) else x["vloss"] for x in outputs]).mean()
-        # vloss = torch.stack([x["vloss"] for x in outputs]).mean()
         self.log("vloss", vloss, sync_dist=True if self.use_ddp else False)
         if self.args.compute_accuracy:
             ndcg = torch.stack([x["ndcg"] for x in outputs]).mean()

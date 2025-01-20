@@ -79,10 +79,10 @@ def train(args):
         # max_epochs=-1, # -1: unlimited training
         # use_distributed_sampler=False,
         accumulate_grad_batches=args.acc_batch,
-        check_val_every_n_epoch=1 if args.ratio_train_data == 1.0 else 5, # TODO: validation each epoch, before else 5
+        check_val_every_n_epoch=1 if args.ratio_train_data == 1.0 else 5,
         val_check_interval=1.0, # validate 1/0.25=4 times each epoch. # 0.25
         logger=logger,
-        log_every_n_steps=1, # TODO: validation each epoch, before 5
+        log_every_n_steps=1,
         callbacks=[checkpoint_callback, tqdm_progbar_callback],
         enable_checkpointing=True,
         # progress_bar_refresh_rate=args.progress_bar_refresh_rate * args.acc_batch,
@@ -92,8 +92,6 @@ def train(args):
         strategy = args.strategy, 
         # deterministic=True, # ensure full reproducibility
     )
-    # TODO: rewrite trainer 
-
 
     # load datasets
     if args.join_method in ["original", "original_ranking_filtering", "truncate_last_ranking_filtering"]:
@@ -257,7 +255,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--primer_path", type=str, default="allenai/PRIMERA", # ../PRIMERA/ # allenai/PRIMERA # allenai/PRIMERA-multinews
     )
-    parser.add_argument("--join_method", type=str, default="tsy_design") # concat_start_wdoc_global, tsy_design
+    parser.add_argument("--join_method", type=str, default="concat_start_wdoc_global")
     parser.add_argument(
         "--debug_mode", action="store_true", help="set true if to debug"
     )

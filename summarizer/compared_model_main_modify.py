@@ -446,7 +446,6 @@ class BSLSummarizerLN(pl.LightningModule):
             return {"vloss": vloss, "log": logs, "progress_bar": logs}
 
     def test_step(self, batch, batch_idx):
-        # test_result = self.validation_step(batch, batch_idx) # TODO: 将validation_step的代码复制过来
         for p in self.model.parameters():
             p.requires_grad = False
         if self.args.mode=='pretrain':
@@ -524,10 +523,10 @@ def train(args):
         # max_epochs=-1, # -1: unlimited training
         # use_distributed_sampler=False,
         accumulate_grad_batches=args.acc_batch,
-        check_val_every_n_epoch=1 if args.ratio_train_data == 1.0 else 5, # TODO: validation each epoch, before else 5
+        check_val_every_n_epoch=1 if args.ratio_train_data == 1.0 else 5,
         val_check_interval=1.0, # validate 1/0.25=4 times each epoch. # 0.25
         logger=logger,
-        log_every_n_steps=1, # TODO: validation each epoch, before 5
+        log_every_n_steps=1,
         callbacks=[checkpoint_callback, tqdm_progbar_callback],
         enable_checkpointing=True,
         # progress_bar_refresh_rate=args.progress_bar_refresh_rate * args.acc_batch,
@@ -606,8 +605,6 @@ def train(args):
             )
     # pdb.set_trace()
     trainer.fit(model, train_dataloader, valid_dataloader)
-    # trainer.fit(model, train_dataloader, test_dataloader, 
-    #             ckpt_path="run_saves/tsy_join_method_train_wcep_pegasus-large_default/summ_checkpoints/step=8670-vloss=1.71-avgr=0.3105.ckpt")
     if args.test_imediate:
         args.resume_ckpt = checkpoint_callback.best_model_path
         print(args.resume_ckpt)
@@ -801,7 +798,6 @@ if __name__ == "__main__":
         help="whether this is a run for few shot learning",
     )
     ########################
-    # TSY added
     parser.add_argument("--devices", default=0, type=int, help="number of gpus to use")
     parser.add_argument(
         "--strategy", default='auto', type=str, help="Whether to use ddp, ddp_spawn strategy"
