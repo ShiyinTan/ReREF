@@ -52,9 +52,8 @@ For Large Language Models, Llama 3 and StableLM-Zephyr, we use [LitGPT](https://
 
 | **Prompt** |
 |--------|
-| The following document comes from the topic-related multiple sources. |
-| Using the information only in the document, summarize the document that the sources mainly talk about. |
-| Document: \{document\}  |
+| ```The following document comes from the topic-related multiple sources. Using the information only in the document, summarize the document that the sources mainly talk about. ```|
+| ```Document: ${document}```  |
 
 <!-- <img src="./LLMprompt.png" alt="LLM prompt in MDS" width="600" /> -->
 
