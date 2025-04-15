@@ -64,3 +64,12 @@ All these original datasets are provided PRIMERA.
 - WCEP-10: the preprocessed version can be found [here](https://storage.googleapis.com/primer_summ/wcep-10.tar.gz)
 - Wikisum: we only the subset version provided by PRIMERA, which can be found [here](https://storage.googleapis.com/primer_summ/wikisum_subset.tar.gz).
 
+
+----
+
+Note that we do not include LightPAL and LogicSumm as baselines, as they are open-domain MDS methods that typically rely on carefully crafted queries and retrieve information from external knowledge bases, rather than focusing solely on the content within the provided multi-document inputs.
+
+We do not include a zero-shot setting in our experiments. For the following reasons:
+- Models such as BART, BartGraphSum, and Pegasus are not pre-trained specifically for multi-document summarization (MDS) and thus require fine-tuning to perform well. 
+- Primera is pre-trained for MDS, directly integrating our retrieval module without fine-tuning would result in an unfair comparison, as its pre-training is tightly coupled with its original input format.
+- As for large language models (LLMs), we aim for a fair comparison. Without fine-tuning, LLMs produce unconvincing and low-quality summaries in both the original and retrieval-based settings.
